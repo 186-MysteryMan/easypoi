@@ -24,7 +24,7 @@ public class TestController {
             orderOutExcelVO.setOrderCode("daihao");
             out.add(orderOutExcelVO);
         }
-        ReportPram rp = new ReportPram();
+        ReportParam rp = new ReportParam();
         rp.setList(out);
         rp.setClazz(OrderOutExcelVO.class);
         rp.setFileName("test");

@@ -30,10 +30,10 @@ public class ReportUtil {
     /**
      * 导出excel
      *
-     * @param reportPram 所需要的参数
+     * @param reportParam 所需要的参数
      */
-    public static void reportOut(ReportPram reportPram) {
-        HttpServletResponse response = reportPram.getResponse();
+    public static void reportOut(ReportParam reportParam) {
+        HttpServletResponse response = reportParam.getResponse();
         try (ServletOutputStream out = response.getOutputStream()) {
             List<ExcelExportEntity> dateColList = new ArrayList<>();
             //动态生成列名
@@ -53,10 +53,10 @@ public class ReportUtil {
             valMap2.put("2", "heheh");
             list.add(valMap2);
 
-            Workbook workbook = ExcelExportUtil.exportExcel(new ExportParams(reportPram.getTitle(), reportPram.getSheetName(), ExcelType.XSSF),
-                    reportPram.getClazz(), reportPram.getList());
+            Workbook workbook = ExcelExportUtil.exportExcel(new ExportParams(reportParam.getTitle(), reportParam.getSheetName(), ExcelType.XSSF),
+                    reportParam.getClazz(), reportParam.getList());
             response.setContentType("application/vnd.ms-excel");
-            response.setHeader("content-Disposition", "attachment;filename=" + reportPram.getFileName() + ".xlsx");
+            response.setHeader("content-Disposition", "attachment;filename=" + reportParam.getFileName() + ".xlsx");
             workbook.write(out);
         } catch (IOException e) {
             log.error("导出excel失败!", e);

@@ -10,7 +10,7 @@ import java.util.List;
  * @date 2021/1/4 13:28
  */
 @Data
-public class ReportPram {
+public class ReportParam {
     /**
      * Excel的导出的参数
      * @param list 需要导出数据的集合
