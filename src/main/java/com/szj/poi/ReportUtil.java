@@ -5,7 +5,6 @@ import cn.afterturn.easypoi.excel.ExcelImportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.ImportParams;
 import cn.afterturn.easypoi.excel.entity.enmus.ExcelType;
-import cn.afterturn.easypoi.excel.entity.params.ExcelExportEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.core.io.ClassPathResource;
@@ -16,10 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author shenggongjie
@@ -35,24 +31,6 @@ public class ReportUtil {
     public static void reportOut(ReportParam reportParam) {
         HttpServletResponse response = reportParam.getResponse();
         try (ServletOutputStream out = response.getOutputStream()) {
-            List<ExcelExportEntity> dateColList = new ArrayList<>();
-            //动态生成列名
-            dateColList.add(new ExcelExportEntity("2022-10-10", "1"));
-            dateColList.add(new ExcelExportEntity("2022-10-11", "2"));
-
-            List<Map<String, Object>> list = new ArrayList<>();
-            //为列名增加数据
-            Map<String, Object> valMap1 = new HashMap<>(2);
-            valMap1.put("1", "hahahha");
-
-            valMap1.put("2", "hahahha");
-            list.add(valMap1);
-            Map<String, Object> valMap2 = new HashMap<>(2);
-            valMap2.put("1", "hehhehe");
-
-            valMap2.put("2", "heheh");
-            list.add(valMap2);
-
             Workbook workbook = ExcelExportUtil.exportExcel(new ExportParams(reportParam.getTitle(), reportParam.getSheetName(), ExcelType.XSSF),
                     reportParam.getClazz(), reportParam.getList());
             response.setContentType("application/vnd.ms-excel");
