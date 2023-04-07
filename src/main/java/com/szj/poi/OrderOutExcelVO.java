@@ -13,7 +13,6 @@ import java.util.Date;
  * @date 2020/12/23 17:22
  */
 @Data
-@ExcelTarget("orderOutExcelVO")
 public class OrderOutExcelVO implements java.io.Serializable{
     private static final long serialVersionUID=1L;
     @Excel(name = "订单号", height = 10, width = 20, isImportField = "true_st",mergeVertical = true)

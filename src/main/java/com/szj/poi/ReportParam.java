@@ -18,7 +18,7 @@ public class ReportParam {
      * @param fileName 导出默认文件名
      * @param title excel标题
      * @param sheetName 空间名
-     * @param clazz 导出格式实体类
+     * @param clazz 导出格式实体类  导出时最少需要两个字段
      */
     private List<?> list;
     private HttpServletResponse response;
